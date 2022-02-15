@@ -5,12 +5,21 @@ import matplotlib.patches as pat
 def test_analysis(data_laser, data_nolaser, plot):
     def cs(Na, Nb, Na0, Nb0, wl, E_pulse):
         return (Na - Na0*Nb/Nb0) / (Nb*E_pulse/(1/wl))
+    
+    def unc(Na, Nb, Na0, Nb0, wl, E_pulse, E_pulse_unc):
+        return np.sqrt(Na*(1/(Nb*E_pulse*wl))**2 + Na0*(-1/(E_pulse*Nb0*wl))**2 \
+            + Nb*(-Na/(E_pulse*wl)*1/Nb**2)**2 \
+                + Nb0*(-Na0/(E_pulse*wl)*1/Nb0**2)**2 \
+                    + E_pulse_unc**2*(-(Na-Nb*Na0/Nb0)/(Nb*wl*E_pulse**2))**2)
 
     mcp_nolaser = np.loadtxt(data_nolaser, delimiter=",")
     ts = np.linspace(0,12000, len(mcp_nolaser))
 
     mcp_laser = np.loadtxt(data_laser, delimiter=",")
     lambdas = np.linspace(410, 700, len(mcp_laser))
+    
+    E_pulse = np.ones(len(mcp_laser))
+    E_pulse_unc = np.ones(len(E_pulse))*1e-1
     
     max_val = 0
     max_idx = 0
@@ -26,6 +35,7 @@ def test_analysis(data_laser, data_nolaser, plot):
         plt.show()
 
     css = np.zeros(len(mcp_laser))
+    uncs = np.zeros(len(mcp_laser))
     for i in range(len(mcp_laser)):
         if plot:
             plt.figure()
@@ -46,12 +56,13 @@ def test_analysis(data_laser, data_nolaser, plot):
         Na0 = sum(mcp_nolaser[max_idx:-1])
         Nb0 = sum(mcp_nolaser[700:(max_idx-200)])
         wl = lambdas[i]
-        E_pulse = 1
         
-        css[i] = cs(Na, Nb, Na0, Nb0, wl, E_pulse)
-    
+        css[i] = cs(Na, Nb, Na0, Nb0, wl, E_pulse[i])
+        uncs[i] = unc(Na, Nb, Na0, Nb0, wl, E_pulse[i], E_pulse_unc[i])
+
+    #uncs = np.zeros(len(css))
     fig = plt.figure()
-    plt.plot(lambdas, css, ".")
+    plt.errorbar(lambdas, css, uncs)
     plt.show()
     
     return fig

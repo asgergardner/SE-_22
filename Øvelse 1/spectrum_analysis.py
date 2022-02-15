@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as pat
 
-def test_analysis(data_laser, data_nolaser, plot):
+def spectrum_analysis(data_laser, data_nolaser, plot):
     def cs(Na, Nb, Na0, Nb0, wl, E_pulse):
         return (Na - Na0*Nb/Nb0) / (Nb*E_pulse/(1/wl))
     
@@ -67,5 +67,5 @@ def test_analysis(data_laser, data_nolaser, plot):
     
     return fig
 
-cross1 = test_analysis("C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/MCP_Laser_410-700_run001_15-02-22.txt", "C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/MCP_NoLaser_410-700_run001_15-02-22.txt", False)
-cross2 = test_analysis("C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/SED_Laser_410-700_run001_15-02-22.txt", "C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/SED_NoLaser_410-700_run001_15-02-22.txt", False)
+cross1 = spectrum_analysis("C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/MCP_Laser_410-700_run001_15-02-22.txt", "C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/MCP_NoLaser_410-700_run001_15-02-22.txt", False)
+cross2 = spectrum_analysis("C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/SED_Laser_410-700_run001_15-02-22.txt", "C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Test data/SED_NoLaser_410-700_run001_15-02-22.txt", False)

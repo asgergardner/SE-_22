@@ -46,7 +46,7 @@ def spectrum_analysis(data_laser, data_nolaser, data_energy, plot):
     # Calculating the cross section and error using the function above. Also plot all histograms
     css = np.zeros(len(mcp_laser))
     uncs = np.zeros(len(mcp_laser))
-    offset = 0*10 # Displacing index for begginning window A
+    offset = 100 # Displacing index for begginning window A
     init_index = max_idx + offset
     windowB_index = 700
     for i in range(len(mcp_laser)):

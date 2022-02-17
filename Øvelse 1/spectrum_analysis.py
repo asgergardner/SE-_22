@@ -46,7 +46,7 @@ def spectrum_analysis(data_laser, data_nolaser, data_energy, plot):
     # Calculating the cross section and error using the function above. Also plot all histograms
     css = np.zeros(len(mcp_laser))
     uncs = np.zeros(len(mcp_laser))
-    offset = 10 # Displacing index for begginning window A
+    offset = 0*10 # Displacing index for begginning window A
     init_index = max_idx + offset
     windowB_index = 700
     for i in range(len(mcp_laser)):
@@ -98,8 +98,8 @@ lambdas2, css2, uncs2, fig2 = spectrum_analysis("C:/Users/soere/Dropbox/Skoletin
                                    "C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 1/Spectrum data - 15.2/energy_data.txt", False)
 
 plt.figure(figsize=(12,6))
-plt.errorbar(lambdas1, css1, uncs1)
-plt.errorbar(lambdas2, css2, uncs2)
+plt.errorbar(lambdas1, css1, uncs1, marker=".", markersize=10, capsize=3)
+plt.errorbar(lambdas2, css2, uncs2, marker=".", markersize=10, capsize=3)
 plt.grid()
 plt.xlabel(r"Wavelength $\lambda$ [nm]", fontsize=14)
 plt.ylabel(r"Cross section $\sigma$ [arb. units]", fontsize=14)

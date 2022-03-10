@@ -1,0 +1,56 @@
+Datafile:
+Z:\Nat_IFA-ecool\DATA\ELISA\GFP\cation\GFP_moscow\GFP#75\2022-02-18\Run-003
+
+Type:	%%% ELISA data file %%%
+Lab:	ELISA
+fileVersion:	1 0
+numberOfFiles:	12
+Start:	18-02-2022, 10:53:46
+End:	18-02-2022, 11:11:24
+
+Parameters:
+Event:	1-23999
+TDC1_DelayedMCP:	-
+TDC1_PromptSED:	-
+LaserOn:	0-1
+EKSPLA_Wavelength:	352-404
+GentecPulseEnergy_mJ_:	0.000543-0.2335
+ScanStep:	-1-10
+proc_time:	19-226853
+
+Scan variable: ScanPar_Wavelength
+Background Detector: TDC1_DelayedMCP
+Photon number: 1
+Saturation factor: 0
+
+No ParameterLimits enabled.
+
+Window settings:
+background	TDC1_DelayedMCP	1050	5000
+background	TDC1_PromptSED	1020	5020
+win1	TDC1_DelayedMCP	5555	6510
+win2	TDC1_PromptSED	5525	5555
+
+Data:
+Data type: result
+Data Source: -
+Additional Info: -
+
+[DATAHEADER]
+ScanPar_Wavelength	Result: TDC1_DelayedMCP:win1		Result: TDC1_PromptSED:win2		Counts: TDC1_DelayedMCP:background-Laser		Counts: TDC1_PromptSED:background-Laser		GentecPulseEnergy_mJ_:Laser		GentecPulseEnergy_mJ_:NoLaser	
+Scan Par	Value	Ush	Value	Ush	Value	Ush	Value	Ush	Value	Ush	Value	Ush
+[\DATAHEADER]
+
+[DATA]
+3.5200e+02	-1.3947e-04	1.2583e-04	-5.3619e-06	1.4543e-05	6.1540e+03	7.8447e+01	1.4950e+03	3.8665e+01	2.1430e-01	3.0869e-03	1.0547e-03	1.8798e-04
+3.5600e+02	1.1937e-05	2.1216e-04	-1.4764e-05	2.3721e-05	6.0410e+03	7.7724e+01	1.4690e+03	3.8328e+01	1.2848e-01	3.9535e-03	NaN	NaN
+3.6000e+02	9.1205e-05	1.5613e-04	-1.2720e-05	1.7176e-05	5.9550e+03	7.7169e+01	1.4830e+03	3.8510e+01	1.7406e-01	2.8966e-03	NaN	NaN
+3.6400e+02	7.3622e-05	1.3484e-04	3.0984e-06	1.5914e-05	5.9430e+03	7.7091e+01	1.3900e+03	3.7283e+01	1.9920e-01	3.9582e-03	NaN	NaN
+3.6800e+02	1.0277e-04	1.6888e-04	-1.7002e-05	1.8322e-05	5.9920e+03	7.7408e+01	1.4490e+03	3.8066e+01	1.5733e-01	2.8896e-03	NaN	NaN
+3.7200e+02	4.7664e-05	2.0267e-04	3.9241e-05	2.6462e-05	5.9780e+03	7.7318e+01	1.4460e+03	3.8026e+01	1.2934e-01	3.5634e-03	NaN	NaN
+3.7600e+02	-3.5494e-05	1.1749e-04	7.6669e-06	1.4386e-05	5.8490e+03	7.6479e+01	1.4390e+03	3.7934e+01	2.1970e-01	4.9424e-03	NaN	NaN
+3.8000e+02	1.4208e-04	1.9960e-04	-6.8481e-07	2.3117e-05	6.0820e+03	7.7987e+01	1.4210e+03	3.7696e+01	1.2880e-01	3.8449e-03	NaN	NaN
+3.8400e+02	-6.3723e-06	1.3185e-04	-3.4516e-06	1.5191e-05	5.8960e+03	7.6785e+01	1.4480e+03	3.8053e+01	1.9206e-01	4.4471e-03	NaN	NaN
+3.8800e+02	1.2660e-04	1.1409e-04	8.1580e-06	1.3770e-05	5.9810e+03	7.7337e+01	1.4890e+03	3.8588e+01	2.2201e-01	4.7795e-03	NaN	NaN
+3.9200e+02	-4.0236e-05	1.1842e-04	-1.6080e-05	1.2679e-05	5.9740e+03	7.7292e+01	1.5280e+03	3.9090e+01	2.0793e-01	4.1755e-03	NaN	NaN
+[\DATA]

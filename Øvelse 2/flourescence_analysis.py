@@ -16,7 +16,7 @@ def flo_analysis(plot):
         plt.errorbar(tab05[:,0], tab05[:,3], np.sqrt(np.absolute(tab05[:,3])), marker=".", color="red", markersize=10, capsize=4)
         plt.errorbar(tab05[:,0], tab15, np.sqrt(np.absolute(tab15)), marker=".", color="green", markersize=10, capsize=4)
         plt.xlabel("Wavelength [nm]", fontsize=14)
-        plt.ylabel("Signal yield [arb. units]", fontsize=14)
+        plt.ylabel("Yield [arb. units]", fontsize=14)
         plt.xticks(fontsize=14)
         plt.yticks(fontsize=14)
         plt.rc('font', size=14)

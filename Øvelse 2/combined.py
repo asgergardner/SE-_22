@@ -19,6 +19,6 @@ plt.grid()
 plt.locator_params(nbins=8)
 plt.tick_params(bottom=True, top=True, right=True, left=True,
                 direction="in", length=7, width=1.2)
-plt.legend(["Flourescence spectrum","Absorption spectrum"], fontsize=14)
+plt.legend(["Fluorescence spectrum","Absorption spectrum"], fontsize=14)
 plt.show()
 

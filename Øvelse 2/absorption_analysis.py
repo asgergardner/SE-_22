@@ -5,7 +5,7 @@ import numpy as np
 from scipy import interpolate
 from scipy import integrate
 
-def abs_analysis(plot):
+def abs_analysis(plot_final, plot):
     filenums = np.arange(7,49) # File numbers
     
     wls = np.zeros(len(filenums)) # Arrays to be filled
@@ -48,19 +48,21 @@ def abs_analysis(plot):
     wl_res = [x[0] for x in res] # Pick out the zipped values
     signal_res = [x[1] for x in res] # Pick out the zipped values
     
+    if plot_final:
+        plt.figure(figsize=(8,4))
+        plt.errorbar(wl_res, signal_res, np.sqrt(np.absolute(signal_res)), marker=".", color="blue", markersize=10, capsize=4)
+        plt.xlabel("Wavelength [nm]", fontsize=14)
+        plt.ylabel("Yield [arb. units]", fontsize=14)
+        plt.xticks(fontsize=14)
+        plt.yticks(fontsize=14)
+        plt.rc('font', size=14)
+        plt.ticklabel_format(axis="y", style="sci", scilimits=(0,0))
+        plt.grid()
+        plt.locator_params(nbins=8)
+        plt.tick_params(bottom=True, top=True, right=True, left=True,
+                        direction="in", length=7, width=1.2)
+        plt.show()
     
-    plt.figure(figsize=(8,4))
-    plt.errorbar(wl_res, signal_res, np.sqrt(signal_res), marker=".", color="red", markersize=10, capsize=4)
-    plt.xlabel("Wavelength [nm]", fontsize=14)
-    plt.ylabel("Absorption [arb. units]", fontsize=14)
-    plt.xticks(fontsize=14)
-    plt.yticks(fontsize=14)
-    plt.rc('font', size=14)
-    plt.ticklabel_format(axis="y", style="sci", scilimits=(0,0))
-    plt.grid()
-    plt.locator_params(nbins=8)
-    plt.tick_params(bottom=True, top=True, right=True, left=True,
-                    direction="in", length=7, width=1.2)
-    plt.show()
+    return np.array(wl_res), np.array(signal_res), np.array(np.sqrt(np.absolute(signal_res)))
     
-abs_analysis(False)
+wl, sig, uncs = abs_analysis(True, False)

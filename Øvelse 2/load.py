@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def load(filename):
+def do_load(filename):
     # Open, read and close
     text_file = open(filename, "r")
     raw = text_file.read()
@@ -31,5 +31,5 @@ def load(filename):
     return wl, tab[1:-1]
 
 # Just to illustrate the functionality    
-wl, tab = load("C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 2/Raw data files/Fluorescence/22030803_LUNA.dat")
+wl, tab = do_load("C:/Users/soere/Dropbox/Skoleting/8. semester/Store Eksperimentelle Øvelser/SE-_22/Øvelse 2/Raw data files/Fluorescence/22030803_LUNA.dat")
 plt.plot(tab[:,0], tab[:,3])

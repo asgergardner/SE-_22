@@ -6,7 +6,7 @@ wl_f, sig_f, uncs_f = flo_analysis(False)
 wl_a, sig_a, uncs_a = abs_analysis(False, False)
 
 plt.figure(figsize=(8,4))
-plt.errorbar(wl_f, sig_f, uncs_f, marker=".", color="red", markersize=10, capsize=4)
+plt.errorbar(wl_f, sig_f, uncs_f, marker=".", color="green", markersize=10, capsize=4)
 plt.errorbar(wl_a, sig_a/(max(sig_a)/max(sig_f)), uncs_a/(max(sig_a)/max(sig_f)), marker=".", color="blue", markersize=10, capsize=4)
 plt.xlabel("Wavelength [nm]", fontsize=14)
 plt.ylabel("Yield [arb. units]", fontsize=14)

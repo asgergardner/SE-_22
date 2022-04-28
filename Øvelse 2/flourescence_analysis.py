@@ -28,6 +28,6 @@ def flo_analysis(plot):
         plt.legend(["OD = 0.5","OD = 1.5"], fontsize=14)
         plt.show()
         
-    return np.array(tab05[:,0]), np.array((tab05[:,3]+tab15)/2), np.array(np.sqrt(np.absolute((tab05[:,3]+tab15)/2)))
+    return np.array(tab05[:,0]), np.array(tab05[:,3]), np.array(np.sqrt(np.absolute(tab05[:,3])))
 
 wl, sig, unc = flo_analysis(True)

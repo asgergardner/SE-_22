@@ -1,0 +1,6 @@
+Au(111) - not so clean...
+
+Hv= 18 eV
+T= 50K
+E_F= 13.593 eV
+(E res 14meV)

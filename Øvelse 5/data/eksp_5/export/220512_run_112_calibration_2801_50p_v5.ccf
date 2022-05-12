@@ -1,0 +1,182 @@
+; Written by CoboldInterface (2022-05-12 14:08:16.306838)
+;-------------------------------------------------------------------------------
+execute ..\CCFs\Cobold2011R5-2_TDC8HP-DAq-part1.ccf;
+execute ..\CCFs\daq_coordinates.ccf;
+execute ..\CCFs\user_parameters.ccf;
+execute ..\CCFs\DAn-part2.ccf;
+
+DAnModule,read_correction_table,correction_table_i_det_part3.ccf;
+
+;-------------------------------------------------------------------------------
+; Modification of DAq parameters
+Parameter 64,7		; [TDC] TriggerChannel, defines "time zero" signal
+Parameter 67,0		; [TDC] AllowOverlap, 0 = false (0 = default)
+Parameter 68,5000		; [TDC] TriggerDeadTime, time in ns (0 = auto)
+Parameter 69,-100		; [TDC] GroupRangeStart, time in ns
+Parameter 70,10000		; [TDC] GroupRangeEnd, time in ns
+
+;-------------------------------------------------------------------------------
+; Modification of DAn parameters
+Parameter 1223,1		; [DAn] Use advanced reconstruction routine (0=no, 1=yes)
+Parameter 1224,1		; [DAn] Position dependent time sum correction (0=no, 1=yes)
+Parameter 1225,1		; [DAn] Use HEX non-linearity correction (0=no, 1=yes)
+Parameter 1790,0		; [DAn] Analyze 0=(any), 1=(1), 2=(>1) 3=(>0) DET40 counts
+Parameter 1421,7		; [Dan] Channel number of tof start (Tof reference)
+Parameter 1228,0		; [NLC] Activate Non-Linear Calibration (0 = false)
+Parameter 1212,-0.37		; [Zero] Spectrometer x0 position in mm
+Parameter 1213,2.94		; [Zero] Spectrometer y0 position in mm
+Parameter 1214,0		; [Zero] Spectrometer rotation in deg
+
+;-------------------------------------------------------------------------------
+; Modification of user parameters
+
+; Miscellaneous parameters
+Parameter 1780,-1		; [Cut] Cut on number of particles on DET40 (-1=any)
+Parameter 1781,-1		; [Cut] Cut on number of particles on DLD (-1=any)
+Parameter 1540,0		; [FgBg] Use chopper signal (1=yes, 0=no)
+Parameter 1541,-1		; [FgBg] Background subtraction factor (fg + factor * bg)
+
+; General parameter list
+Parameter 1502,3500		; [EStat] Repeller potential in V (current)
+Parameter 1504,1		; [EStat] Particle charge in e (current)
+Parameter 1506,0.00054858		; [EStat] Particle mass in u (current)
+Parameter 1507,0		; [Zero] Center of mass vx velocity in mm/us
+Parameter 1508,0		; [Zero] Center of mass vy velocity in mm/us
+Parameter 1509,0		; [Zero] Zero velocity z0 tof in ns (0 to use 1510)
+Parameter 1542,14.2		; [Chopper] Chopper period in ms (used for modulo function)
+Parameter 1543,0		; [Chopper] Offset in ms between TTL signal and chopper wheel
+Parameter 1544,0.5		; [Chopper] Foreground start time in ms after chopper open
+Parameter 1545,6.5		; [Chopper] Foreground end time in ms after chopper open
+Parameter 1546,0.5		; [Chopper] Background start time in ms after chopper close
+Parameter 1547,6.5		; [Chopper] Background end time in ms after chopper close
+Parameter 1733,912		; [Cut] 1st user parameter (e.g. 912 for photon energy)
+Parameter 1737,913		; [Cut] 2nd user parameter (e.g. 913 for temperature)
+Parameter 1850,1		; [Scan] Scan spectra (0=no, +1=xy, +2=vr, +4=vy, +8=t1, 16=m1, +32=scanpar, +64=rates)
+Parameter 1859,0		; [Scan] Scan spectra (0=no, +1=fgxy, +2=bgxy, +4=fgscan, 8=bgscan, +16=fgm1, +32=bgm1)
+Parameter 1851,5		; [Scan] Number of steps (-1111=compute from p902, max ciMaxNumberOfScanHists=200)
+Parameter 1852,27.1		; [Scan] Scan start (-1111=use p901 from scan window)
+Parameter 1853,2.5		; [Scan] Scan step (-1111=use p903 from scan window)
+Parameter 1854,908		; [Scan] Scan parameter (e.g. 908 scan, 1856 multi file)
+Parameter 1857,0		; [Scan] Scan p1850 weight (0=all, 1=fg, 2=bg, 3=subtracted)
+Parameter 1858,0		; [Scan] Scan parameter sign (0=original, 1=absolute, -1=invert cuts)
+Parameter 1860,1		; [Scan] First DLD hit to be filled into scan spectra (first hit is 1)
+Parameter 1861,1		; [Scan] Last DLD hit to be filled into scan spectra (first hit is 1)
+Parameter 1870,1871		; [Scan] Parameter for setborders (see user_parameters.ccf for values)
+Parameter 1791,1874		; [LMF] Filter parameter (1874 for AbsoluteEventTime in s)
+Parameter 1795,0		; [LMF] Apply cuts as global filter (1=yes, 0=no)
+
+; Calibration parameters
+Parameter 1501,3500		; [EStat] Repeller potential in V (calibration)
+Parameter 1503,1		; [EStat] Particle charge in e (calibration)
+Parameter 1510,358.5		; [TOF] Sqrt(mass) to flight time factor in ns/sqrt(u)
+Parameter 1511,0		; [TOF] Time zero t0 such that the ion TOF is (t - t0)
+Parameter 1512,0		; [TOF] DLD flight time factor in ns/sqrt(u) (0: use 1510)
+Parameter 1513,0		; [TOF] Raw 1st ion arrival time for 2nd mass (0: use 1511)
+Parameter 1520,0		; [VMI] p0 for Ekin = p0*R^2 + p1*R^4 + p2*R^6 curve
+Parameter 1521,0		; [VMI] p1 for Ekin = p0*R^2 + p1*R^4 + p2*R^6 curve
+Parameter 1522,0		; [VMI] p2 for Ekin = p0*R^2 + p1*R^4 + p2*R^6 curve
+Parameter 1523,0		; [VMI] 3D VMI calibration factor Vz = factor * dt / m
+Parameter 1530,1		; [SMI] 2D magnification factor (must be 0 for VMI)
+Parameter 1531,0		; [SMI] 1D magnification ns/mm (must be 0 for VMI)
+
+; Bin widths and spectrum ranges
+Parameter 1600,-44.925		; [Binning] x (X position) lower bound
+Parameter 1601,44.925		; [Binning] x (X position) upper bound
+Parameter 1602,0.15		; [Binning] x (X position) bin width
+Parameter 1603,-44.925		; [Binning] y (Y position) lower bound
+Parameter 1604,44.925		; [Binning] y (Y position) upper bound
+Parameter 1605,0.15		; [Binning] y (Y position) bin width
+Parameter 1606,-44.925		; [Binning] z (Z position) lower bound
+Parameter 1607,44.925		; [Binning] z (Z position) upper bound
+Parameter 1608,0.15		; [Binning] z (Z position) bin width
+Parameter 1609,0.075		; [Binning] r (Radial position) lower bound
+Parameter 1610,44.925		; [Binning] r (Radial position) upper bound
+Parameter 1611,0.15		; [Binning] r (Radial position) bin width
+Parameter 1612,-0.75		; [Binning] Theta (Angle in plane) lower bound
+Parameter 1613,90.75		; [Binning] Theta (Angle in plane) upper bound
+Parameter 1614,1.5		; [Binning] Theta (Angle in plane) bin width
+Parameter 1615,0		; [Binning] Ekin (Kinetic energy) lower bound
+Parameter 1616,100		; [Binning] Ekin (Kinetic energy) upper bound
+Parameter 1617,0.1		; [Binning] Ekin (Kinetic energy) bin width
+Parameter 1618,-200		; [Binning] Tof 1D (Flight time) lower bound
+Parameter 1619,6000		; [Binning] Tof 1D (Flight time) upper bound
+Parameter 1620,1		; [Binning] Tof 1D (Flight time) bin width
+Parameter 1639,0		; [Binning] Tof 2D (Flight time) lower bound
+Parameter 1640,3000		; [Binning] Tof 2D (Flight time) upper bound
+Parameter 1641,20		; [Binning] Tof 2D (Flight time) bin width
+Parameter 1621,0		; [Binning] Mass 1D (Mass from Tof) lower bound
+Parameter 1622,150		; [Binning] Mass 1D (Mass from Tof) upper bound
+Parameter 1623,0.03		; [Binning] Mass 1D (Mass from Tof) bin width
+Parameter 1642,0		; [Binning] Mass 2D (Mass from Tof) lower bound
+Parameter 1643,45		; [Binning] Mass 2D (Mass from Tof) upper bound
+Parameter 1644,0.3		; [Binning] Mass 2D (Mass from Tof) bin width
+Parameter 1624,-10		; [Binning] ScanPar (Scan parameter value) lower bound
+Parameter 1625,160		; [Binning] ScanPar (Scan parameter value) upper bound
+Parameter 1626,0.1		; [Binning] ScanPar (Scan parameter value) bin width
+Parameter 1645,0		; [Binning] Borders (Scan borders) lower bound
+Parameter 1646,150		; [Binning] Borders (Scan borders) upper bound
+Parameter 1647,0.06		; [Binning] Borders (Scan borders) bin width
+Parameter 1633,0		; [Binning] user1 (User parameter 1) lower bound
+Parameter 1634,160		; [Binning] user1 (User parameter 1) upper bound
+Parameter 1635,0.5		; [Binning] user1 (User parameter 1) bin width
+Parameter 1636,5		; [Binning] user2 (User parameter 2) lower bound
+Parameter 1637,35		; [Binning] user2 (User parameter 2) upper bound
+Parameter 1638,0.1		; [Binning] user2 (User parameter 2) bin width
+Parameter 1627,0		; [Binning] DaqTime (Data acquisition time) lower bound
+Parameter 1628,5400		; [Binning] DaqTime (Data acquisition time) upper bound
+Parameter 1629,10		; [Binning] DaqTime (Data acquisition time) bin width
+Parameter 1630,-10		; [Binning] Chopper (Time since last chopper TTL) lower bound
+Parameter 1631,40		; [Binning] Chopper (Time since last chopper TTL) upper bound
+Parameter 1632,0.1		; [Binning] Chopper (Time since last chopper TTL) bin width
+
+; Condition parameters
+Parameter 1701,0		; [AOI] set area of interest (1=yes, 0=no)
+Parameter 1706,0		; [Radius in plane] r/vr cut (1=yes, 0=no)
+Parameter 1709,0		; [Kinetic energy] Ekin cut (1=yes, 0=no)
+Parameter 1712,0		; [Angle in plane] Theta cut (1=yes, 0=no)
+Parameter 1715,0		; [Scan parameter] scan cut (1=yes, 0=no)
+Parameter 1718,1		; [Mass 1 from Tof] mass1 cut (1=yes, 0=no)
+Parameter 1719,3.5		; [Mass 1 from Tof] mass1 cut lower bound
+Parameter 1720,4.5		; [Mass 1 from Tof] mass1 cut upper bound
+Parameter 1721,0		; [Mass 2 from Tof] mass2 cut (1=yes, 0=no)
+Parameter 1740,0		; [DLD t2 - t1] etof2 cut (1=yes, 0=no)
+Parameter 1743,0		; [Ion Tof 1] itof1 cut (1=yes, 0=no)
+Parameter 1746,0		; [Ion Tof 2] itof2 cut (1=yes, 0=no)
+Parameter 1730,0		; [User parameter 1] user1 cut (1=yes, 0=no)
+Parameter 1734,0		; [User parameter 2] user2 cut (1=yes, 0=no)
+Parameter 1782,0		; [Cut DET40 counts] det40 cut (1=yes, 0=no)
+Parameter 1785,0		; [Cut DLD counts] dld cut (1=yes, 0=no)
+Parameter 1792,0		; [LMF filter (see p1791)] filter cut (1=yes, 0=no)
+
+;-------------------------------------------------------------------------------
+; Histogram selection
+
+execute ..\CCFs\histograms_normal.ccf;
+;execute ..\CCFs\histograms_scan.ccf;
+;execute ..\CCFs\histograms_scan_av.ccf;
+;execute ..\CCFs\histograms_user1.ccf;
+;execute ..\CCFs\histograms_user2.ccf;
+;execute ..\CCFs\histograms_chopper.ccf;
+execute ..\CCFs\histograms_xy_e1.ccf;
+;execute ..\CCFs\histograms_xy_e2.ccf;
+;execute ..\CCFs\histograms_z_e1.ccf;
+;execute ..\CCFs\histograms_vmi_e1.ccf;
+;execute ..\CCFs\histograms_mass.ccf;
+;execute ..\CCFs\histograms_time.ccf;
+execute ..\CCFs\histograms_roentdek.ccf;
+execute ..\CCFs\histograms_rawdata.ccf;
+
+;-------------------------------------------------------------------------------
+; Start acquisition or analysis
+
+new fileread,O:\Nat_Clusterdyn\Projects\HeDroplets@ASTRID2\DATA\2022\220512\run_112_calibration_2801_50p_v5.DAn_coinc,ANALYSIS,0,9223372036854775807,0,1,,,;
+start;
+; wait 1s; for batch analysis
+; wait; for batch analysis
+;view all xy fg;
+;view all tof fg;
+;view all mass fg;
+view hits bgcut+;
+update 10000c;
+;update 0.2s,25d;
+;show status;

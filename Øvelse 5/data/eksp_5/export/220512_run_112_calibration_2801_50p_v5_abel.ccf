@@ -1,0 +1,41 @@
+
+; Parameters for Abel inversion
+Parameter 1801,0		; [PreVMI] Centering method (0=user, 1=com, 2=simplex)
+Parameter 1802,0		; [PreVMI] User center X (e.g. in mm)
+Parameter 1803,0		; [PreVMI] User center Y/Z (e.g. in mm)
+Parameter 1804,1		; [PreVMI] Scale factor for all matrix entries
+Parameter 1805,1		; [PreVMI] Step size for initial simplex
+Parameter 1806,1111		; [PreVMI] Weights for the four quadrants
+Parameter 1807,0		; [PreVMI] Evaluation range (0=maximum square)
+Parameter 1808,0		; [PreVMI] Use transpose matrix (1=yes, 0=no)
+Parameter 1809,0		; [PreVMI] Save histogram.dat file (1=yes, 0=no)
+Parameter 1810,1		; [MaxEnt] Scale data set
+Parameter 1811,0		; [MaxEnt] Subtract constant background
+Parameter 1812,2		; [MaxEnt] Valid data radius (1=all data, 2=max radius)
+Parameter 1813,1		; [MaxEnt] Stepsize for final velocity distribution
+Parameter 1814,1		; [MaxEnt] Reference value of the map
+Parameter 1815,50		; [MaxEnt] Maximum number of iterations
+Parameter 1816,0		; [MaxEnt] Number of hidden layers
+Parameter 1817,2		; [MaxEnt] Termination criterion (see -Tn in manual)
+Parameter 1818,1		; [MaxEnt] Starting map (1=constant, 2=crude inversion)
+Parameter 1819,0		; [MaxEnt] Maximum order of Legendre distributions (0=default)
+Parameter 1820,0		; [MaxEnt] Use transpose matrix [old] (1=yes, 0=no)
+Parameter 1821,0		; [MaxEnt] Likelihood estimator (1=Gaussian, 0=Poissonian)
+Parameter 1822,0		; [MaxEnt] Starting map from previous run (1=yes, 0=no)
+Parameter 1827,2		; [MaxEnt] Program (0=Meveler3, 1=Mevir, 2=Meveler, 3=Melexir)
+Parameter 1828,2		; [MaxEnt] Output (0=none, 1=screen, 2=log file)
+Parameter 1829,1		; [MaxEnt] Print commands in log window (1=yes, 0=no)
+Parameter 1830,3		; [MaxEnt] Import images (0=inverted, +1=simulated, +2=residual)
+Parameter 1831,0		; [MaxEnt] 1D spectrum weight (0=counts, 1=densities)
+Parameter 1832,0		; [MaxEnt] Fill radii from (0=image, 1=distributions)
+Parameter 1833,1		; [MaxEnt] Fill angles from (0=image, 1=distributions)
+Parameter 1834,0		; [MaxEnt] Fill energy from (0=image, 1=distributions)
+Parameter 1609,0.075		; [Binning] (v)r (Radial position) lower bound
+Parameter 1610,44.925		; [Binning] (v)r (Radial position) upper bound
+Parameter 1611,0.15		; [Binning] (v)r (Radial position) bin width
+Parameter 1612,-0.75		; [Binning] Theta (Angle in plane) lower bound
+Parameter 1613,90.75		; [Binning] Theta (Angle in plane) upper bound
+Parameter 1614,1.5		; [Binning] Theta (Angle in plane) bin width
+Parameter 1615,0		; [Binning] Ekin (Kinetic energy) lower bound
+Parameter 1616,40		; [Binning] Ekin (Kinetic energy) upper bound
+Parameter 1617,0.1		; [Binning] Ekin (Kinetic energy) bin width
